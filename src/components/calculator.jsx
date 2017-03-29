@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router';
 
 import { Button, Well, Form, FormGroup, FormControl, Col, Row, Grid } from 'react-bootstrap';
+import { calculator } from '../css/jsCSS.js';
 
 
 
@@ -75,12 +76,16 @@ export default class extends Component {
   }
 
   render() {
+    //@TODO: do some refrectoring, make map staments so that i dont repeat code, it also looks ugly and unprofetional
     return(
       <div>
         <Well bsSize="small">
           <Grid>
             <Row>
-              <Col  lg={12}>
+              <Col lg={1}>
+
+              </Col>
+              <Col  lg={10}>
                 <Form>
                   <FormGroup bsSize="large">
                     <FormControl
@@ -93,37 +98,35 @@ export default class extends Component {
             </Row>
 
             <Row>
-              <Col ls={2}>
-                <Button bsSize="large" onClick={() => this.handleNumber("7") }>7</Button>
-                <Button bsSize="large" onClick={() => this.handleNumber("4") }>4</Button>
-                <Button bsSize="large" onClick={() => this.handleNumber("1") }>1</Button>
-              </Col>
-              <Col ls={2}>
-                <Button bsSize="large" onClick={() => this.handleNumber("8") }>8</Button>
-                <Button bsSize="large" onClick={() => this.handleNumber("5") }>5</Button>
-                <Button bsSize="large" onClick={() => this.handleNumber("2") }>2</Button>
-              </Col>
-              <Col ls={2}>
-                <Button bsSize="large" onClick={() => this.handleNumber("9") }>9</Button>
-                <Button bsSize="large" onClick={() => this.handleNumber("6") }>6</Button>
-                <Button bsSize="large" onClick={() => this.handleNumber("3") }>3</Button>
-              </Col>
-              <Col ls={2}>
+              <Col lg={1}>
 
               </Col>
-              <Col ls={4}>
-                <Button bsSize="large" onClick={ this.handleClear }>C/e</Button>
-                <Button bsSize="large" onClick={() => this.handleOpp("+")}>+</Button>
-                <Button bsSize="large" onClick={() => this.handleOpp("-")}>-</Button>
-                <Button bsSize="large" onClick={() => this.handleOpp("/")}>/</Button>
-                <Button bsSize="large" onClick={() => this.handleOpp("*")}>*</Button>
-                <Button bsSize="large" onClick={() => this.handleOpp("=")}>=</Button>
+              <Col lg={2}>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("7") }>7</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("4") }>4</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("1") }>1</Button>
+                <Button bsSize="large" bsStyle="danger" style={calculator.buttons} onClick={ this.handleClear }>C/e</Button>
               </Col>
-            </Row>
+              <Col lg={2}>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("8") }>8</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("5") }>5</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("2") }>2</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("0") }>0</Button>
+              </Col>
+              <Col lg={2}>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("9") }>9</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("6") }>6</Button>
+                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("3") }>3</Button>
+                <Button bsSize="large" bsStyle="warning" style={calculator.buttons} onClick={() => this.handleOpp("=")}>=</Button>
+              </Col>
+              <Col lg={1}>
 
-            <Row>
-              <Col ls={6}>
-                <Button bsSize="large">0</Button>
+              </Col>
+              <Col lg={3}>
+                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("+")}>+</Button>
+                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("-")}>-</Button>
+                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("/")}>/</Button>
+                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("*")}>*</Button>
               </Col>
             </Row>
           </Grid>

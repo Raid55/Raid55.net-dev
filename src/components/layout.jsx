@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Col, Row, Grid } from 'react-bootstrap';
+
 export default class extends Component {
 
   render() {
@@ -9,7 +11,13 @@ export default class extends Component {
           {this.props.nav}
         </div>
         <div>
-          {this.props.children}
+          <Grid>
+            <Row>
+              <Col lg={12}>
+                {this.props.children}
+              </Col>
+            </Row>
+          </Grid>
         </div>
       </div>
     );
