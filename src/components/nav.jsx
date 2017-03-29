@@ -14,15 +14,21 @@ export default class extends Component {
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">
-              <text>Raid55</text>
+              Raid55
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem  href="#">About me</NavItem>
-            <NavItem  href="/lol">Cv</NavItem>
+            <NavItem>
+              <Link to="/about">About me</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="https://registry.jsonresume.org/Raid55">
+              Cv
+            </Link>
+            </NavItem>
             <NavDropdown  title="freeCodeCamp" id="basic-nav-dropdown">
               <MenuItem >
                 <Link to="/calculator">Calculator</Link>

@@ -1,7 +1,9 @@
 module.exports={
   calculator:{
     buttons:{
-      width:"100%"
+      width:"100%",
+      border: "3px solid rgb(173, 16, 16)",
+      margin:"2px"
     }
   }
 }

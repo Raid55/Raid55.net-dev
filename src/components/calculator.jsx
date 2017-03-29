@@ -112,31 +112,29 @@ export default class extends Component {
 
               </Col>
               <Col lg={2}>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("7") }>7</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("4") }>4</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("1") }>1</Button>
+                { ["7", "4", "1"].map(el =>
+                  <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
+                ) }
                 <Button bsSize="large" bsStyle="danger" style={calculator.buttons} onClick={ this.handleClear }>C/e</Button>
               </Col>
               <Col lg={2}>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("8") }>8</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("5") }>5</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("2") }>2</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("0") }>0</Button>
+                { ["8", "5", "2","0"].map(el =>
+                  <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
+                ) }
               </Col>
               <Col lg={2}>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("9") }>9</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("6") }>6</Button>
-                <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber("3") }>3</Button>
+                { ["9", "6", "3"].map(el =>
+                  <Button bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
+                ) }
                 <Button bsSize="large" bsStyle="warning" style={calculator.buttons} onClick={() => this.handleOpp("=")}>=</Button>
               </Col>
               <Col lg={1}>
 
               </Col>
               <Col lg={3}>
-                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("+")}>+</Button>
-                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("-")}>-</Button>
-                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("/")}>/</Button>
-                <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp("*")}>*</Button>
+                { ["+", "-", "/", "*"].map(el =>
+                  <Button bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp(el)}>{ el }</Button>
+                ) }
               </Col>
             </Row>
           </Grid>

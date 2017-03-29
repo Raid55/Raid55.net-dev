@@ -6,7 +6,7 @@ export default class extends Component {
 
   render() {
     return (
-      <div>
+      <div className="site-wrapper">
         <div>
           {this.props.nav}
         </div>
