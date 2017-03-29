@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router';
 
-import { Button, Well, Form, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Well, Form, FormGroup, FormControl, Col, Row, Grid } from 'react-bootstrap';
 
 
 
@@ -92,19 +92,39 @@ export default class extends Component {
               </Col>
             </Row>
 
-            <Row className="show-grid">
-              <Col xs={6} md={4}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
-              <Col xs={6} md={4}><code>&lt;{'Col xs={6} md={4}'} /&gt;</code></Col>
-              <Col xsHidden md={4}><code>&lt;{'Col xsHidden md={4}'} /&gt;</code></Col>
+            <Row>
+              <Col ls={2}>
+                <Button bsSize="large" onClick={() => this.handleNumber("7") }>7</Button>
+                <Button bsSize="large" onClick={() => this.handleNumber("4") }>4</Button>
+                <Button bsSize="large" onClick={() => this.handleNumber("1") }>1</Button>
+              </Col>
+              <Col ls={2}>
+                <Button bsSize="large" onClick={() => this.handleNumber("8") }>8</Button>
+                <Button bsSize="large" onClick={() => this.handleNumber("5") }>5</Button>
+                <Button bsSize="large" onClick={() => this.handleNumber("2") }>2</Button>
+              </Col>
+              <Col ls={2}>
+                <Button bsSize="large" onClick={() => this.handleNumber("9") }>9</Button>
+                <Button bsSize="large" onClick={() => this.handleNumber("6") }>6</Button>
+                <Button bsSize="large" onClick={() => this.handleNumber("3") }>3</Button>
+              </Col>
+              <Col ls={2}>
+
+              </Col>
+              <Col ls={4}>
+                <Button bsSize="large" onClick={ this.handleClear }>C/e</Button>
+                <Button bsSize="large" onClick={() => this.handleOpp("+")}>+</Button>
+                <Button bsSize="large" onClick={() => this.handleOpp("-")}>-</Button>
+                <Button bsSize="large" onClick={() => this.handleOpp("/")}>/</Button>
+                <Button bsSize="large" onClick={() => this.handleOpp("*")}>*</Button>
+                <Button bsSize="large" onClick={() => this.handleOpp("=")}>=</Button>
+              </Col>
             </Row>
 
-            <Row className="show-grid">
-              <Col xs={6} xsOffset={6}><code>&lt;{'Col xs={6} xsOffset={6}'} /&gt;</code></Col>
-            </Row>
-
-            <Row className="show-grid">
-              <Col md={6} mdPush={6}><code>&lt;{'Col md={6} mdPush={6}'} /&gt;</code></Col>
-              <Col md={6} mdPull={6}><code>&lt;{'Col md={6} mdPull={6}'} /&gt;</code></Col>
+            <Row>
+              <Col ls={6}>
+                <Button bsSize="large">0</Button>
+              </Col>
             </Row>
           </Grid>
         </Well>
@@ -115,18 +135,3 @@ export default class extends Component {
 // className="output"
 // className="numberPad"
 // className="operators"
-
-  <div>
-    <input type="text" value={this.state.calcOutput} id="calcOutput"/>
-  </div>
-
-    <FloatingActionButton mini={true} onClick={() => this.handleNumber("9") }>
-      9
-    </FloatingActionButton>
-
-<RaisedButton label="+" onClick={() => this.handleOpp("+")}/>
-<RaisedButton label="-" onClick={() => this.handleOpp("-") }/>
-<RaisedButton label="/" onClick={() => this.handleOpp("/") }/>
-<RaisedButton label="*" onClick={() => this.handleOpp("*") }/>
-<RaisedButton label="=" onClick={() => this.handleOpp("=") }/>
-<RaisedButton label="C/e" onClick={ this.handleClear }/>

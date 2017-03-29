@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App.js';
 import Home from './components/home.jsx';
 import Calc from './components/calculator.jsx';
-import Nav from './components/nav.jsx';
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
@@ -13,7 +12,7 @@ ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="calc" component={Calc}/>
+      <Route path="calculator" component={Calc}/>
       {/* <Route path="weather" component={WeatherSearch}>
         <Route path=":city" component={WeatherDisplay}/>
       </Route>

@@ -24,9 +24,9 @@ export default class extends Component {
             <NavItem  href="#">About me</NavItem>
             <NavItem  href="/lol">Cv</NavItem>
             <NavDropdown  title="freeCodeCamp" id="basic-nav-dropdown">
-              <Link to="/calculator">
-              <MenuItem >Calculator</MenuItem>
-              </Link>
+              <MenuItem >
+                <Link to="/calculator">Calculator</Link>
+              </MenuItem>
               <MenuItem >Twitch Api</MenuItem>
               <MenuItem >Weather</MenuItem>
               <MenuItem divider />
