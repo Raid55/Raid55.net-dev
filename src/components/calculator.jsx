@@ -35,6 +35,7 @@ export default class extends Component {
     let tempAccu = 0;
     const { oppSlot, numSlot, accu, calcOutput } = this.state
     if(oppSlot === "" && opp !== "="){
+      console.log("we get here", oppSlot, numSlot, accu, calcOutput);
       this.setState({
         numSlot: "",
         accu: Number(numSlot),
@@ -61,12 +62,21 @@ export default class extends Component {
           });
           break;
       }
-      this.setState({
-        numSlot: "",
-        accu: tempAccu,
-        oppSlot: opp,
-        calcOutput: tempAccu+" "+opp+" "
-      });
+      if(opp === "="){
+        this.setState({
+          numSlot: tempAccu,
+          accu: "",
+          oppSlot: "",
+          calcOutput: opp+" "+ tempAccu+" "
+        });
+      }else{
+        this.setState({
+          numSlot: "",
+          accu: tempAccu,
+          oppSlot: opp,
+          calcOutput: tempAccu+" "+opp+" "
+        });
+      }
     }else{
       console.log("error ERROR SYNTAXICALS ERRORS")
       this.setState({
