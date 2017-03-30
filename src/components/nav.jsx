@@ -33,8 +33,15 @@ export default class extends Component {
               <MenuItem >
                 <Link to="/calculator">Calculator</Link>
               </MenuItem>
-              <MenuItem >Twitch Api</MenuItem>
-              <MenuItem >Weather</MenuItem>
+              <MenuItem >
+                <Link to="/weather">Live Weather</Link>
+              </MenuItem>
+              <MenuItem >
+                <Link to="/github">Github Search</Link>
+              </MenuItem>
+              <MenuItem >
+                <Link to="/twitch">Twitch Api</Link>
+              </MenuItem>
               <MenuItem divider />
               <MenuItem >tribute page</MenuItem>
             </NavDropdown>

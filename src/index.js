@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App.js';
 import Home from './components/home.jsx';
 import Calc from './components/calculator.jsx';
+import TwitchFeat from  './components/twitch/featTwitch.jsx';
+import UserTwitch from './components/twitch/twitchProfile.jsx'
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
@@ -15,14 +17,13 @@ ReactDOM.render(
       <Route path="calculator" component={Calc}/>
       {/* <Route path="weather" component={WeatherSearch}>
         <Route path=":city" component={WeatherDisplay}/>
-      </Route>
+      </Route> */}
       <Route path="twitch" component={TwitchFeat}>
         <Route path=":username" component={UserTwitch}/>
       </Route>
-      <Route path="github" component={GitSearch}>
+      {/* <Route path="github" component={GitSearch}>
         <Route path=":username" component={UserpageGit}>
           <Route path="repos" component={Repos}/>
-          <Route path="followers" component={Followers}/>
           <Route path="following" component={Following}/>
         </Route>
       </Route> */}

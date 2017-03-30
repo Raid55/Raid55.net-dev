@@ -96,6 +96,7 @@ export default class extends Component {
 
               </Col>
               <Col  lg={10}>
+                <h2>Calculator</h2>
                 <Form>
                   <FormGroup bsSize="large">
                     <FormControl
