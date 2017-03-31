@@ -87,38 +87,60 @@ export default class extends Component {
     }else{
       // console.log("lol,",this.state.featured);
       return(
-        <div className="featTwitchBoxHolder">
+        <Well style={twitch.container}>
           <p>Pardon this horible CSS, Im not really good at styling. P.s. User Photoes are squished just click on any tab away and then back to this page to fix. Im still trying to find what makes that bug happen.</p>
-          { this.state.featured.map((el) => {
-            return el.status === null ?
-            <div className="twitchBox">
-              <p> { el.username } </p>
-              <p> does not exists on the twitch...</p>
-            </div>
-            :
-            <a target="_blank" key={el.id} href={el.channel.url}>
-              <div className="twitchBox">
-                <img className={ el.stream === null ? "offlineCirclePic" : "onlineCirclePic" }
-                  src={ el.channel.logo }
-                  alt={ el.channel.name } />
-                <div>
-                  <p className={ el.stream === null ? "offlineUsername" :"onlineUsername"}>{ el.channel.name }</p>
-                  <p className="gameText">{ el.stream === null ? `(ー。ー)` : el.channel.game }</p>
-                  <p className="statusText">{ el.stream === null ? `Offline` : el.channel.status }</p>
-                </div>
-              </div>
-            </a>
-          }) }
-          <p>Search for a Twitch user person thing: </p>
-          <input className="twitchSearchBox" type="text" value={this.state.username} ref="username" onChange={this.handleChange}/>
-          <Link to={`/twitch/${this.state.username}`}>
-            <input className="searchBtn" type='button' value="Search"/>
-          </Link>
-          <div>
-            {this.props.children}
-          </div>
-        </div>
+          <Grid>
+            <Row>
+              <Col lg={3}>
+
+              </Col>
+              <Col lg={2}>
+
+              </Col>
+              <Col lg={2}>
+
+              </Col>
+              <Col lg={2}>
+
+              </Col>
+              <Col lg={3}>
+
+              </Col>
+            </Row>
+          </Grid>
+        </Well>
       )
     }
   }
 }
+<div className="featTwitchBoxHolder">
+  <p>Pardon this horible CSS, Im not really good at styling. P.s. User Photoes are squished just click on any tab away and then back to this page to fix. Im still trying to find what makes that bug happen.</p>
+  { this.state.featured.map((el) => {
+    return el.status === null ?
+    <div className="twitchBox">
+      <p> { el.username } </p>
+      <p> does not exists on the twitch...</p>
+    </div>
+    :
+    <a target="_blank" key={el.id} href={el.channel.url}>
+      <div className="twitchBox">
+        <img className={ el.stream === null ? "offlineCirclePic" : "onlineCirclePic" }
+          src={ el.channel.logo }
+          alt={ el.channel.name } />
+        <div>
+          <p className={ el.stream === null ? "offlineUsername" :"onlineUsername"}>{ el.channel.name }</p>
+          <p className="gameText">{ el.stream === null ? `(ー。ー)` : el.channel.game }</p>
+          <p className="statusText">{ el.stream === null ? `Offline` : el.channel.status }</p>
+        </div>
+      </div>
+    </a>
+  }) }
+  <p>Search for a Twitch user person thing: </p>
+  <input className="twitchSearchBox" type="text" value={this.state.username} ref="username" onChange={this.handleChange}/>
+  <Link to={`/twitch/${this.state.username}`}>
+    <input className="searchBtn" type='button' value="Search"/>
+  </Link>
+  <div>
+    {this.props.children}
+  </div>
+</div>
