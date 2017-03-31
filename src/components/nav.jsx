@@ -26,9 +26,12 @@ export default class extends Component {
               <Link to="/about" style={nav.linkDecoration} >About me</Link>
             </NavItem>
             <NavItem>
-              <a href="www.lol.com" style={nav.linkDecoration}>
+              <Link to="/cv">
+                Cv
+              </Link>
+              {/* <a href="www.lol.com" style={nav.linkDecoration}>
               Cv
-            </a>
+            </a> */}
             </NavItem>
             <NavDropdown  title="freeCodeCamp" id="basic-nav-dropdown">
               <MenuItem >

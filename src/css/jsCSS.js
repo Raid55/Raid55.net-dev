@@ -42,13 +42,17 @@ module.exports={
         width: "100%",
         backgroundColor:"rgb(120, 53, 161)",
         borderRadius:"25px",
-        border:"9px solid rgb(119, 181, 27)"
+        border:"9px solid rgb(119, 181, 27)",
+        display:"flex",
+        justifyContent:"flex-start"
       },
       offline:{
         width: "100%",
         backgroundColor:"rgb(120, 53, 161)",
         borderRadius:"25px",
-        border:"9px solid rgb(177, 58, 58)"
+        border:"9px solid rgb(177, 58, 58)",
+        display:"flex",
+        justifyContent:"flex-start"
       },
       grey:{
         width: "100%",
@@ -57,8 +61,31 @@ module.exports={
         border:"9px solid rgb(56, 56, 56)"
       }
     },
+    boxInfo:{
+      a:{
+        textDecoration:"none"
+      },
+      box:{
+        width:"75%",
+        display: "flex",
+        justifyContent:"center",
+        flexDirection:"column",
+
+      },
+      username:{
+        color:"rgb(66, 143, 207)",
+        fontSize: "24px",
+        fontWeight:"800",
+        margin:"0"
+      },
+      status:{
+        color:"rgb(221, 160, 26)",
+        fontSize: "14px",
+        fontWeight:"400",
+        margin:"5px 0 0 0"
+      }
+    },
     picThatFits:{
-      backgroundColor:"tomato",
       height:"55px",
       width:"25%",
       borderRadius:"15px 0 0 15px"

@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 const feat = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "brunofin", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
+//@TODO: finish up the featured component and start working on search component for this and for github search
+
 export default class extends Component {
   state ={
     err: false,
@@ -91,21 +93,14 @@ export default class extends Component {
           <p>Pardon this horible CSS, Im not really good at styling. P.s. User Photoes are squished just click on any tab away and then back to this page to fix. Im still trying to find what makes that bug happen.</p>
           <Grid>
             <Row>
-              <Col lg={3}>
+              { this.state.featured.slice(0, 3).map((el) =>
 
-              </Col>
-              <Col lg={2}>
+              ) }
+            </Row>
+            <Row>
+              { this.state.featured.slice(3, 6).map((el) =>
 
-              </Col>
-              <Col lg={2}>
-
-              </Col>
-              <Col lg={2}>
-
-              </Col>
-              <Col lg={3}>
-
-              </Col>
+              ) }
             </Row>
           </Grid>
         </Well>

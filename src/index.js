@@ -5,6 +5,7 @@ import Home from './components/home.jsx';
 import Calc from './components/calculator.jsx';
 import TwitchFeat from  './components/twitch/twitchFeatured.jsx';
 import UserTwitch from './components/twitch/twitchProfile.jsx'
+import Cv from './components/cv.jsx';
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
@@ -14,6 +15,7 @@ ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
+      <Route path="cv" component={Cv}/>
       <Route path="calculator" component={Calc}/>
       {/* <Route path="weather" component={WeatherSearch}>
         <Route path=":city" component={WeatherDisplay}/>
