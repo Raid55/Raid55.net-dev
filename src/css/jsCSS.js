@@ -39,22 +39,27 @@ module.exports={
     },
     featBox:{
       online:{
+        margin: "6px 0 6px 0",
         width: "100%",
         backgroundColor:"rgb(120, 53, 161)",
         borderRadius:"25px",
         border:"9px solid rgb(119, 181, 27)",
         display:"flex",
-        justifyContent:"flex-start"
+        justifyContent:"flex-start",
+        textDecoration:"none"
       },
       offline:{
+        margin: "6px 0 6px 0",
         width: "100%",
         backgroundColor:"rgb(120, 53, 161)",
         borderRadius:"25px",
         border:"9px solid rgb(177, 58, 58)",
         display:"flex",
-        justifyContent:"flex-start"
+        justifyContent:"flex-start",
+        textDecoration:"none"
       },
       grey:{
+        margin: "6px 0 6px 0",
         width: "100%",
         backgroundColor:"rgb(120, 53, 161)",
         borderRadius:"25px",

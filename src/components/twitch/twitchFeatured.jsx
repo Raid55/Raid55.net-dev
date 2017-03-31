@@ -4,7 +4,9 @@ import { Link } from 'react-router';
 import { Button, Well, Form, FormGroup, FormControl, Col, Row, Grid } from 'react-bootstrap';
 import { twitch } from '../../css/jsCSS.js';
 
-const feat = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "brunofin", "habathcx", "RobotCaleb", "noobs2ninjas"];
+import Search from '../searchBox.jsx';
+
+const feat = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "brunofin", "habathcx", "RobotCaleb", "noobs2ninjas", "summit1g"];
 
 export default class extends Component {
   state ={
@@ -17,6 +19,8 @@ export default class extends Component {
   maxChars = () => {
     this.setState({username: this.refs.username.value.substr(0, this.state.maxChar)})
   }
+
+  //TWITCH api is down and not currently working
 
   componentWillMount(){
     // const username = this.props.params.username;
@@ -34,7 +38,7 @@ export default class extends Component {
       })
       .then(result => result.json())
       .then((gitJsonStream) => {
-        fetch(`https://wind-bow.glitch.me/twitch-api/streams/${el}`)
+        fetch(`https://wind-bow.glitch.me/twitch-api/channels/${el}`)
         .then(function(response) {
           if (response.status === 200) {
             return response;
@@ -63,7 +67,7 @@ export default class extends Component {
               channel: gitJsonChannel
             })
           }
-          // console.log(finalArr);
+          console.log(finalArr);
           // console.log("top",finalArr[0].channel.logo);
           that.setState({featured: that.state.featured.concat(finalArr)})
           finalArr = [];
@@ -102,7 +106,7 @@ export default class extends Component {
                       <p> does not exists on the twitch...</p>
                     </div>
                     :
-                    <a target="_blank" key={el.id} href={el.channel.url} >
+                    <a target="_blank" key={el.id} href={el.channel.url} style={twitch.boxInfo.a}>
                       <div style={ el.stream === null ? twitch.featBox.offline : twitch.featBox.online}>
                         <img
                           src={ el.channel.logo }
@@ -121,25 +125,13 @@ export default class extends Component {
             </Well>
           </Col>
           <Col lg={8}>
-            <Well>
-              <p>Search for a Twitch user person thing: </p>
-              <FormControl
-                type="text"
-                ref="username"
-                placeholder="Enter text"
-                value={this.state.username}
-                onChange={this.maxChars}
-              />
-              <Link to={`/twitch/${this.state.username}`}>
-                <Button style={twitch.link} bsStyle="info">
-                  Search
-                </Button>
-              </Link>
-              <div>
-                {/* {this.props.children} */}
-                <p>lol</p>
-              </div>
-            </Well>
+            <Search
+              maxChar={39}
+              whatSearch="What is the Twitch Streamer you are looking for"
+              link="/twitch/"
+              >
+              {this.props.children}
+            </Search>
           </Col>
         </Row>
       </Grid>
