@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import { Button, Well, FormControl } from 'react-bootstrap';
-// import {  } from '../css/jsCSS.js';
+import { Button, Well, FormControl, Row, Col, Grid } from 'react-bootstrap';
+import { searchBox } from '../../css/jsCSS.js';
 
 //ALL PROPS
 //maxChar - maximum character allowed for search box
@@ -19,17 +19,18 @@ export default class extends Component {
   }
 
   maxChars = () => {
-    this.setState({text: this.refs.text.value.substr(0, this.state.maxChar)})
+    console.log(this.text);
+    this.setState({text: this.text.value.substr(0, this.state.maxChar)})
   }
 
 
   render() {
     return(
-      <Well>
+      <Well style={searchBox.well}>
         <p>{ this.props.whatSearch }</p>
         <FormControl
           type="text"
-          ref="text"
+          inputRef={ref => { this.text = ref; }}
           value={this.state.text}
           onChange={this.maxChars}
         />
@@ -38,9 +39,7 @@ export default class extends Component {
             Search
           </Button>
         </Link>
-        <div>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </Well>
     )
   }

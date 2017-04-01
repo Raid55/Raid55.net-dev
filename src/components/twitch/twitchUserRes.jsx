@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router'
+import { Link } from 'react-router';
+
+import { Well } from 'react-bootstrap';
+import { searchBox } from '../../css/jsCSS.js';
+
+
 
 export default class extends Component {
   state={
@@ -18,7 +23,7 @@ export default class extends Component {
     })
     .then(result => result.json())
     .then((gitJsonStream) => {
-      fetch(`https://wind-bow.glitch.me/twitch-api/streams/${username}`)
+      fetch(`https://wind-bow.glitch.me/twitch-api/channels/${username}`)
       .then(function(response) {
         if (response.status === 200) {
           return response;
@@ -29,12 +34,12 @@ export default class extends Component {
       .then(result => result.json())
       .then((gitJsonChannel) => {
         if(gitJsonChannel.status === 404){
+          console.log('it gets here');
           this.setState({
-            userInfo: {
-              status: null
-            }
+            err:true
           })
         }else if(gitJsonStream.stream === null){
+          console.log('it gets here2');
           this.setState({
             userInfo: {
               id: gitJsonChannel._id,
@@ -44,6 +49,7 @@ export default class extends Component {
           })
         }else{
           // console.log(gitJsonStream);
+          console.log('it gets here4');
           this.setState({
             userInfo: {
               id: gitJsonChannel._id,
@@ -74,60 +80,45 @@ export default class extends Component {
     this.fetchInfo()
   }
 
-  render(){
-    const {err, userInfo} = this.state
-    if(err === false && userInfo ){
-      return userInfo.status === null ?
-      <div>
-        <div className="profileBox">
-          <p>User not found :(</p>
-        </div>
-      </div>
-      :
-      <div>
-        <div className="profileBox">
-          <img className={ userInfo.stream === null ? "userpic offlineCirclePic largerPic" :
-            "userpic onlineCirclePic largerPic" }
-            src={ userInfo.channel.logo } alt={ userInfo.channel.name }/>
-          <div className="profileInfo">
-            <div className={ userInfo.stream === null ? "username offlineUsername" :
-              "username onlineUsername"}>{ userInfo.channel.name }
-            </div>
-            <div className="contentGit gameText">{ userInfo.stream === null ? `(ー。ー)` :
-              userInfo.channel.game }
-            </div>
-            <div className="contentGit statusText">{ userInfo.stream === null ? `Offline` :
-              userInfo.channel.status }
-            </div>
-            <a target="_blank" href={ userInfo.channel.url } className="contentGit">{ userInfo.channel.url }</a>
+
+  render() {
+    const  {err, userInfo} = this.state;
+    if(err === false && userInfo){
+      return(
+        <div>
+          <hr />
+          {  !userInfo  ?
+          <div style={searchBox.featBox.grey} >
+            <p> {this.props.params.username} </p>
+            <p> does not exists on the searchBox...</p>
           </div>
-          <div className="profileStats">
-            <div>
-              <div className="redBold">Language</div>
-              <p>{ userInfo.channel.broadcaster_language }</p>
+          :
+          <a target="_blank" key={userInfo.id} href={userInfo.channel.url} style={searchBox.link}>
+            <div style={ userInfo.stream === null ? searchBox.featBox.offline : searchBox.featBox.online}>
+              <img
+                src={ userInfo.channel.logo }
+                alt={ userInfo.channel.name }
+                style={searchBox.featBox.picThatFits}
+              />
+              <div style={searchBox.featBox.boxInfo.box}>
+                <h5 style={searchBox.featBox.boxInfo.username}>{ userInfo.channel.name }</h5>
+                <h6 style={searchBox.featBox.boxInfo.status}>{userInfo.stream === null ? `(ー。ー)` : userInfo.channel.game}</h6>
+              </div>
             </div>
-            <div>
-              <div className="redBold">Views</div>
-              <p>{ userInfo.channel.views }</p>
-            </div>
-            <div>
-              <div className="redBold">Followers</div>
-              <p>{ userInfo.channel.followers }</p>
-            </div>
-          </div>
+          </a> }
         </div>
-      </div>
+      )
     }else if(err === true){
       return (
-        <div className="profileBox">
+        <Well>
           <div>ERROR 55...HUNDRED pls consult a consultant and then the manual and then check that reality is still glued together</div>
-        </div>
+        </Well>
       )
     }else{
       return (
-        <div className="profileBox">
+        <Well>
           <div>Loading...</div>
-        </div>
+        </Well>
       )
     }
   }

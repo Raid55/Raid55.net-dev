@@ -95,5 +95,69 @@ module.exports={
       width:"25%",
       borderRadius:"15px 0 0 15px"
     }
+  },
+  //SEARCH BOX
+  searchBox:{
+    well:{
+      backgroundColor: "rgb(73, 107, 207)",
+      border: "4px solid rgb(191, 47, 47)"
+    },
+    link:{
+      textDecoration:"none"
+    },
+    featBox:{
+      online:{
+        margin: "6px 0 6px 0",
+        width: "100%",
+        backgroundColor:"rgb(120, 53, 161)",
+        borderRadius:"25px",
+        border:"9px solid rgb(119, 181, 27)",
+        display:"flex",
+        justifyContent:"flex-start",
+        textDecoration:"none"
+      },
+      offline:{
+        margin: "6px 0 6px 0",
+        width: "100%",
+        backgroundColor:"rgb(120, 53, 161)",
+        borderRadius:"25px",
+        border:"9px solid rgb(177, 58, 58)",
+        display:"flex",
+        justifyContent:"flex-start",
+        textDecoration:"none"
+      },
+      grey:{
+        margin: "6px 0 6px 0",
+        width: "100%",
+        backgroundColor:"rgb(120, 53, 161)",
+        borderRadius:"25px",
+        border:"9px solid rgb(56, 56, 56)"
+      },
+      boxInfo:{
+        box:{
+          width:"75%",
+          display: "flex",
+          justifyContent:"center",
+          flexDirection:"column"
+        },
+        username:{
+          color:"rgb(66, 143, 207)",
+          fontSize: "24px",
+          fontWeight:"800",
+          margin:"0"
+        },
+        status:{
+          color:"rgb(221, 160, 26)",
+          fontSize: "14px",
+          fontWeight:"400",
+          margin:"5px 0 0 0"
+        }
+      },
+      picThatFits:{
+        height:"110px",
+        width:"25%",
+        borderRadius:"15px 0 0 15px"
+      }
+    }
   }
 }

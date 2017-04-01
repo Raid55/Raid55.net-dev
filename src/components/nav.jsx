@@ -26,9 +26,9 @@ export default class extends Component {
               <Link to="/about" style={nav.linkDecoration} >About me</Link>
             </NavItem>
             <NavItem>
-              <Link to="/cv">
+              <a target="_blank"  href='https://registry.jsonresume.org/Raid55' style={{ textDecoration: 'none' }}>
                 Cv
-              </Link>
+              </a>
               {/* <a href="www.lol.com" style={nav.linkDecoration}>
               Cv
             </a> */}
@@ -38,14 +38,14 @@ export default class extends Component {
                 <Link to="/calculator" style={nav.linkDecoration}>Calculator</Link>
               </MenuItem>
               <MenuItem >
+                <Link to="/twitch">Twitch Api</Link>
+              </MenuItem>
+              {/* <MenuItem >
                 <Link to="/weather" style={nav.linkDecoration}>Live Weather</Link>
               </MenuItem>
               <MenuItem >
                 <Link to="/github">Github Search</Link>
-              </MenuItem>
-              <MenuItem >
-                <Link to="/twitch">Twitch Api</Link>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem divider />
               <MenuItem >tribute page</MenuItem>
             </NavDropdown>

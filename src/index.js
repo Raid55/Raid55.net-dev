@@ -4,7 +4,7 @@ import App from './App.js';
 import Home from './components/home.jsx';
 import Calc from './components/calculator.jsx';
 import TwitchFeat from  './components/twitch/twitchFeatured.jsx';
-import UserTwitch from './components/twitch/oldTwitchProfile.jsx'
+import UserTwitch from './components/twitch/twitchUserRes.jsx'
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
