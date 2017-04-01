@@ -101,6 +101,7 @@ export default class extends Component {
                 </Row>
                 <Row>
                   <Col lg={12}>
+                    <h1>{this.props.location.query.user}</h1>
                     { this.state.featured.map((el,indx) =>
                       el.status === null ?
                       <div style={twitch.featBox.grey} key={indx}>

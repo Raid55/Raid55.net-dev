@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 import Home from './components/home.jsx';
-import Calc from './components/calculator.jsx';
+import Calc from './components/calculator';
 import TwitchFeat from  './components/twitch/twitchFeatured.jsx';
-import UserTwitch from './components/twitch/twitchUserRes.jsx'
+import UserTwitch from './components/twitch/twitchUserRes.jsx';
+import BlackJack from './components/blackjack'
 
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
@@ -15,6 +16,7 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
       <Route path="calculator" component={Calc}/>
+      <Route path="blackjack" component={BlackJack}/>
       {/* <Route path="weather" component={WeatherSearch}>
         <Route path=":city" component={WeatherDisplay}/>
       </Route> */}

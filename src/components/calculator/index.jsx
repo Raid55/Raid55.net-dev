@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router';
 
 import { Button, Well, Form, FormGroup, FormControl, Col, Row, Grid } from 'react-bootstrap';
-import { calculator } from '../css/jsCSS.js';
+import styles from './styles.js';
 
 
 
@@ -114,27 +114,27 @@ export default class extends Component {
               </Col>
               <Col lg={2}>
                 { ["7", "4", "1"].map(el =>
-                  <Button key={el} bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
+                  <Button key={el} bsSize="large" style={styles.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
                 ) }
-                <Button bsSize="large" bsStyle="danger" style={calculator.buttons} onClick={ this.handleClear }>C/e</Button>
+                <Button bsSize="large" bsStyle="danger" style={styles.buttons} onClick={ this.handleClear }>C/e</Button>
               </Col>
               <Col lg={2}>
                 { ["8", "5", "2","0"].map(el =>
-                  <Button key={el} bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
+                  <Button key={el} bsSize="large" style={styles.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
                 ) }
               </Col>
               <Col lg={2}>
                 { ["9", "6", "3"].map(el =>
-                  <Button key={el} bsSize="large" style={calculator.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
+                  <Button key={el} bsSize="large" style={styles.buttons} onClick={() => this.handleNumber(el) }>{ el }</Button>
                 ) }
-                <Button bsSize="large" bsStyle="warning" style={calculator.buttons} onClick={() => this.handleOpp("=")}>=</Button>
+                <Button bsSize="large" bsStyle="warning" style={styles.buttons} onClick={() => this.handleOpp("=")}>=</Button>
               </Col>
               <Col lg={1}>
 
               </Col>
               <Col lg={3}>
                 { ["+", "-", "/", "*"].map(el =>
-                  <Button key={el} bsSize="large" bsStyle="primary" style={calculator.buttons} onClick={() => this.handleOpp(el)}>{ el }</Button>
+                  <Button key={el} bsSize="large" bsStyle="primary" style={styles.buttons} onClick={() => this.handleOpp(el)}>{ el }</Button>
                 ) }
               </Col>
             </Row>
