@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { Button, Well, Form, FormGroup, FormControl, Col, Row, Grid } from 'react-bootstrap';
 import { twitch } from '../../css/jsCSS.js';
 
-import Search from '../search/searchBox.jsx';
+import Search from '../search';
 
 const feat = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "brunofin", "habathcx", "RobotCaleb", "noobs2ninjas", "summit1g"];
 

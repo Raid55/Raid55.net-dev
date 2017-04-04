@@ -9,6 +9,7 @@ export default class extends Component {
 
   fetchInfo = () => {
   var CORS = 'https://crossorigin.me/';
+  // i know not keep my api keys exposed like this but this is a throw away api key
   const GOOGLE_MAPS_API_KEY = "AIzaSyAulehec9LJQ7r9rQlyVvZT-Joo3m_ZD5o";
   const { city } = this.props.params
   const that = this;

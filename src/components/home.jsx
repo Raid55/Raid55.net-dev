@@ -21,7 +21,7 @@ export default class extends Component {
       <Jumbotron style={home.jumbatron}>
         <div>
           <h1 >Hello</h1>
-          <p>This site is not done yet</p>
+          <p>Welcome to my site, feel free to click anywhere.</p>
         </div>
       </Jumbotron>
     )

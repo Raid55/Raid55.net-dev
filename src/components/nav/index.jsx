@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 
-import { nav } from '../css/jsCSS.js';
+import nav from './styles.js';
 
 export default class extends Component {
-  state ={
-  };
+
 
   render() {
     return (
@@ -49,6 +48,9 @@ export default class extends Component {
               <MenuItem divider />
               <MenuItem >tribute page</MenuItem>
             </NavDropdown>
+            <NavItem>
+              <Link to="/blackjack" style={nav.linkDecoration} >BlackJack</Link>
+            </NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

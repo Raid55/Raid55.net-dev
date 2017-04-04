@@ -89,7 +89,7 @@ export default class extends Component {
     //@TODO: do some refrectoring, make map staments so that i dont repeat code, it also looks ugly and unprofetional
     return(
       <div>
-        <Well bsSize="small">
+        <Well bsSize="small" style={styles.well}>
           <Grid>
             <Row>
               <Col lg={1}>
