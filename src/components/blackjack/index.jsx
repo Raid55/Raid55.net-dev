@@ -19,7 +19,7 @@ export default class extends Component {
 
   render() {
     return(
-      this.state.gameStart === true ?
+      this.state.gameStart !== true ? //CHANGE after dev
       <Game />
       :
       <Grid>
