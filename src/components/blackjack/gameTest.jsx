@@ -7,9 +7,9 @@ import styles from './styles.js';
 
 const startState = {
   err: false,
-  deckId: "bqx0q0y7b9wl", //CHANGE after done with testing
-  playerChips: 900,
-  pot: 100,
+  deckId: "",
+  playerChips: 100,
+  pot: 0,
   playerCards: [],
   playerScore: 0,
   dealerCards: [],
@@ -17,6 +17,7 @@ const startState = {
   roundLost: false,
   roundTied: false,
   roundWon: false,
+  bettingAllowed:  false,
   noMoney: false
 }
 
@@ -31,7 +32,7 @@ export default class extends Component {
     const { pot, playerChips, bettingAllowed } = this.state;
     if(bettingAllowed && (playerChips-amount >= 0)){
       this.setState({
-        pot: pot + amount,
+        pot: pot + amount
         playerChips: playerChips - amount
       })
     }
@@ -50,15 +51,15 @@ export default class extends Component {
     })
   }
 
-  // checkIfCanBet = () => {
-  //   return new Promise((resolve,reject) => {
-  //     if(this.state.playerChips > 0){
-  //       resolve(true)
-  //     }else{
-  //       reject(false)
-  //     }
-  //   })
-  // }
+  checkIfCanBet = () => {
+    return new Promise((resolve,reject) => {
+      if(this.state.playerChips > 0){
+        resolve(true)
+      }else{
+        reject(false)
+      }
+    })
+  }
 
   // bet = () => {
   //   let that = this
@@ -98,23 +99,25 @@ export default class extends Component {
   newGame = () => {
     let that = this;
     const { deckId } = this.state;
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
-    .then(res => res.json())
-    .then((res) => {
-      let tempPlayerScore = that.computeScore([res.cards[1], res.cards[3]])
-      that.setState({
-        dealerCards: [res.cards[0], res.cards[2]],
-        playerCards: [res.cards[1], res.cards[3]],
-        dealerScore: that.computeScore([res.cards[2]]),
-        playerScore: tempPlayerScore,
-        bettingAllowed: false,
-        roundWon: tempPlayerScore === 21 ? true : false
+    this.bet()
+    .then(() => {
+      fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
+      .then(res => res.json())
+      .then((res) => {
+        let tempPlayerScore = that.computeScore([res.cards[1], res.cards[3]])
+        that.setState({
+          dealerCards: [res.cards[0], res.cards[2]],
+          playerCards: [res.cards[1], res.cards[3]],
+          dealerScore: that.computeScore([res.cards[2]]),
+          playerScore: tempPlayerScore,
+          roundWon: tempPlayerScore === 21 ? true : false
+        })
       })
-    })
-    .catch(function(err){
-      console.log(err,'newHAND');
-      that.setState({
-        err: true
+      .catch(function(err){
+        console.log(err,'newHAND');
+        that.setState({
+          err: true
+        })
       })
     })
   }
@@ -144,18 +147,14 @@ export default class extends Component {
   endGame = () => {
     const { roundLost, roundTied, roundWon } = this.state
     let that = this
-    if(roundLost){
-      setTimeout(that.resetPlayingArea,6000)
-    }else if(roundTied){
-      setTimeout(that.resetPlayingArea,6000)
-    }else if(roundWon){
-      setTimeout(that.resetPlayingArea,6000)
+    if(){
+      setTimeout()
+      that.resetPlayingArea()
     }
   }
 
   componentWillMount(){
     this.newDeck()
-    this.newGame()
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -164,7 +163,7 @@ export default class extends Component {
       roundTied !== prevState.roundTied ||
       roundWon !== prevState.roundWon ) {
       //calling the endgame function if a round state is changed
-      // this.endGame()
+      this.endGame()
     }
   }
 
@@ -172,40 +171,21 @@ export default class extends Component {
 
   render() {
     const {
-    err,
-    pot,
-    roundWon,
-    roundLost,
-    roundTied,
     dealerCards,
     dealerScore,
     playerCards,
-    playerChips,
     playerScore,
+    roundLost,
+    roundTied,
+    roundWon,
     bettingAllowed } = this.state
     return(
-      err ?
-      <Grid>
-        <Row>
-          <Col lg={2}></Col>
-          <Col lg={8}>
-            <Well>
-              There has been an error
-            </Well>
-          </Col>
-          <Col lg={2}></Col>
-        </Row>
-      </Grid>
-      :
       <Grid>
         <Row>
           <Col lg={2}></Col>
           <Col lg={8}>
             <Well style={styles.gameWell}>
-              { dealerCards.length < 0  ?
-                <p>no Cards</p>
-                :
-                <h3>Dealer Cards</h3> }
+              <h3>Dealer Cards</h3>
               <div style={styles.cardContainer}>
                 {/* <img src="https://deckofcardsapi.com/static/img/KH.png" alt="lol" style={styles.card}/>
                 <img src="https://deckofcardsapi.com/static/img/KH.png" alt="lol" style={styles.card}/> */}
@@ -214,10 +194,7 @@ export default class extends Component {
                 ) }
               </div>
               <hr />
-              {  playerCards.length < 0   ?
-                <p>no Cards</p>
-                :
-                <h3>Player Cards</h3> }
+              <h3>Player Cards</h3>
               <div style={styles.cardContainer}>
                 { playerCards.map((el,indx) =>
                   <img src={el.image} alt={el.code} key={indx} style={styles.card}/>
@@ -225,28 +202,19 @@ export default class extends Component {
               </div>
               <hr/>
               <div style={styles.actionContainer}>
-                <Well style={styles.actionWells.playerChips}>
-                  <h4>Your Chips</h4>
-                  {playerChips}
-                </Well>
-                <Well style={styles.actionWells.pot}>
-                  <h4>Pot</h4>
-                  {pot}
-                </Well>
-                <Well style={styles.actionWells.buttonsWell}>
-                  <Button style={styles.actionButton} >Hit me</Button>
-                  <Button style={styles.actionButton} >Stand</Button>
-                </Well>
+                <Button style={styles.actionButton} >Hit me</Button>
+                <Button style={styles.actionButton} >Stand</Button>
               </div>
               <hr/>
               <Button onClick={this.newGame}>
                 Play
               </Button>
+              <
               <div style={styles.chipsContainer}>
-                <Button style={styles.chips.white} onClick={() => this.betAmount(1) } >1</Button>
-                <Button style={styles.chips.bleu} onClick={() => this.betAmount(25) } >25</Button>
-                <Button style={styles.chips.green} onClick={() => this.betAmount(50) } >50</Button>
-                <Button style={styles.chips.purple} onClick={() => this.betAmount(100) } >100</Button>
+                <Button style={styles.chips.white} onClick={() => this.betAmount(1) } >1</>
+                <Button style={styles.chips.bleu} onClick={() => this.betAmount(25) } >25</>
+                <Button style={styles.chips.green} onClick={() => this.betAmount(50) } >50</>
+                <Button style={styles.chips.purple} onClick={() => this.betAmount(100) } >100</>
               </div>
             </Well>
           </Col>
