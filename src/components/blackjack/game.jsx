@@ -97,6 +97,7 @@ export default class extends Component {
 
   newGame = () => {
     let that = this;
+    this.resetPlayingArea()
     const { deckId } = this.state;
     fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
     .then(res => res.json())
@@ -145,11 +146,11 @@ export default class extends Component {
     const { roundLost, roundTied, roundWon } = this.state
     let that = this
     if(roundLost){
-      setTimeout(that.resetPlayingArea,6000)
+      setTimeout(that.newGame,7000)
     }else if(roundTied){
-      setTimeout(that.resetPlayingArea,6000)
+      setTimeout(that.newGame,7000)
     }else if(roundWon){
-      setTimeout(that.resetPlayingArea,6000)
+      setTimeout(that.newGame,7000)
     }
   }
 
@@ -172,17 +173,17 @@ export default class extends Component {
 
   render() {
     const {
-    err,
-    pot,
-    roundWon,
-    roundLost,
-    roundTied,
-    dealerCards,
-    dealerScore,
-    playerCards,
-    playerChips,
-    playerScore,
-    bettingAllowed } = this.state
+      err,
+      pot,
+      roundWon,
+      roundLost,
+      roundTied,
+      dealerCards,
+      dealerScore,
+      playerCards,
+      playerChips,
+      playerScore,
+      bettingAllowed } = this.state
     return(
       err ?
       <Grid>
@@ -240,7 +241,7 @@ export default class extends Component {
               </div>
               <hr/>
               <Button onClick={this.newGame}>
-                Play
+                Place your Bets
               </Button>
               <div style={styles.chipsContainer}>
                 <Button style={styles.chips.white} onClick={() => this.betAmount(1) } >1</Button>

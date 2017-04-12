@@ -43,7 +43,7 @@ module.exports={
       borderRadius:"15px",
       fontWeight:"800"
     },
-    buttons:{
+    buttonsWell:{
       padding:"8px 19px 8px 19px",
       fontSize:"18px",
       color:"rgb(194, 107, 5)",
@@ -51,6 +51,9 @@ module.exports={
       border:"6px solid rgb(210, 185, 13)",
       borderRadius:"15px",
       fontWeight:"800"
+    },
+    buttons:{
+      
     }
   },
   chipsContainer:{

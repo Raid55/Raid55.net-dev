@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Forecast from 'react-forecast';
 // import { Link } from 'react-router'
 
+
 export default class extends Component {
   state={
     err: false,
