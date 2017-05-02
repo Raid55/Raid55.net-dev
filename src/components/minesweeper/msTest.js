@@ -14,6 +14,9 @@ function generateGame(h,w,b){
     }
   }
 
+  //use modulo on the width to check if at beging or end of line, then only switch next and top bottom
+  // to fix the problem. try to check if at left start or right begining
+  //set up var i to be equal to a number that would make the switch statment usefull for all cases
   gameArr = gameArr.reduce((accu,el,indx) => {
     if(el === "*"){
       accu.push("*");
